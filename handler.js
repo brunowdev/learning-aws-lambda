@@ -1,17 +1,19 @@
 'use strict';
 
 module.exports.hello = (event, context, callback) => {
+	
+		let remainingTime = context.getRemainingTimeInMillis();
+		let functionName = context.functionName;
+		let AWSrequestID = context.awsRequestId;
  
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Hello World!',
-      input: event,
-    }),
-  };
+		const response = {
+			statusCode: 200,
+			ev:event,
+			rt: remainingTime,
+			fn: functionName,
+			aid: AWSrequestID
+		};
 
   callback(null, response);
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
 };
