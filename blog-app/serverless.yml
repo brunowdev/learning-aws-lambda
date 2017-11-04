@@ -22,30 +22,35 @@ functions:
       - http:
           path: articles
           method: post
+          cors: true
   getArticle:
     handler: articles/get.handler
     events:
       - http:
           path: articles/{id}
           method: get
+          cors: true
   getAllArticles:
     handler: articles/getAll.handler
     events:
       - http:
           path: articles
-          method: get          
+          method: get   
+          cors: true      
   updateArticle:
     handler: articles/put.handler
     events:
       - http:
           path: articles
           method: put
+          cors: true
   deleteArticle:
     handler: articles/delete.handler
     events:
       - http:
           path: articles
-          method: delete        
+          method: delete   
+          cors: true
 
 # Dynamo configuration
 resources:
