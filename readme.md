@@ -15,3 +15,7 @@
 # Invocar uma function localmente
 
 > sls invoke local -f hello
+
+# Invocar uma function passando um evento
+
+> sls invoke -f hello --path evt.json
