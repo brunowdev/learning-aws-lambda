@@ -44,8 +44,26 @@ functions:
     handler: articles/create.handler
     events:
       - http:
-          path: create-article
+          path: articles
           method: post
+  getArticle:
+    handler: articles/get.handler
+    events:
+      - http:
+          path: articles
+          method: get
+  updateArticle:
+    handler: articles/put.handler
+    events:
+      - http:
+          path: articles
+          method: put
+  deleteArticle:
+    handler: articles/delete.handler
+    events:
+      - http:
+          path: articles
+          method: delete        
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
 #      - sns: greeter-topic
