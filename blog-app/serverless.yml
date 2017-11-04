@@ -1,9 +1,5 @@
 service: blog
 
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
-# frameworkVersion: "=X.X.X"
-
 provider:
   name: aws
   runtime: nodejs6.10
@@ -90,14 +86,19 @@ functions:
 #    environment:
 #      variable2: value2
 
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
+# Dynamo configuration
+resources:
+  Resources:
+    BlogTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: BlogTable
+        AttributeDefinitions: 
+         - AttributeName: article_id
+           AttributeType: S
+        KeySchema:
+         - AttributeName: article_id
+           KeyType: HASH
+        ProvisionedThroughput:
+           ReadCapacityUnits: 1
+           WriteCapacityUnits: 1
