@@ -41,9 +41,7 @@ provider:
 
 functions:
   createArticle:
-    handler: handler.createArticle
-
-
+    handler: articles/create.handler
     events:
       - http:
           path: create-article
