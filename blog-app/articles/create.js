@@ -5,7 +5,7 @@ const dynamo = new AWS.DynamoDB.DocumentClient();
 const uuid = require('uuid');
 
 module.exports.handler = (event, context, callback) => {
-	const data = event;
+	const data = JSON.parse(event.body);
 	if (!data.text || typeof data.text !== 'string') {
 		console.error('Validation failed');
 		callback(new Error('Body did not contain a text property.'));
