@@ -14,11 +14,11 @@ module.exports.handler = (event, context, callback) => {
 	console.log(data.text);
 	
 	const response = {
-	statusCode: 202,
-	body: JSON.stringify({
-		  message: 'Created article.',
-		  input: event,
-		}),
+		statusCode: 201,
+		body: JSON.stringify({
+			  message: 'Created article.',
+			  input: event,
+			}),
 	};
 
 	callback(null, response);
