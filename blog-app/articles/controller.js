@@ -7,6 +7,13 @@ module.exports = class ArticleController {
         this.dbDAO = dbDAO;
     }
 
+    allCORSHeader() {
+        return {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": true
+        };
+    }
+
     createArticle(article, callback) {
         this.dbDAO.create(article, (error, result) => {
             if (error) {
@@ -14,10 +21,7 @@ module.exports = class ArticleController {
             } else {
                 const response = {
                     statusCode: 200,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-                        "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
-                    },
+                    headers: this.allCORSHeader(),
                     body: JSON.stringify(article)
                 };
                 callback(null, response);
@@ -32,10 +36,7 @@ module.exports = class ArticleController {
             } else {
                 const response = {
                     statusCode: 200,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-                        "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
-                    },
+                    headers: this.allCORSHeader(),
                     body: JSON.stringify(result.body)
                 };
                 callback(null, response);
@@ -50,10 +51,7 @@ module.exports = class ArticleController {
             } else {
                 const response = {
                     statusCode: 200,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-                        "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
-                    },
+                    headers: this.allCORSHeader(),
                     body: JSON.stringify(result.body)
                 };
                 callback(null, response);
@@ -68,10 +66,7 @@ module.exports = class ArticleController {
             } else {
                 const response = {
                     statusCode: 200,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-                        "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
-                    },
+                    headers: this.allCORSHeader(),
                     body: JSON.stringify(result)
                 };
                 callback(null, response);
@@ -86,10 +81,7 @@ module.exports = class ArticleController {
             } else {
                 const response = {
                     statusCode: 200,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-                        "Access-Control-Allow-Credentials": true // Required for cookies, authorization headers with HTTPS
-                    },
+                    headers: this.allCORSHeader(),
                     body: JSON.stringify(result)
                 };
                 callback(null, response);

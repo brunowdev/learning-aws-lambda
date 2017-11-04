@@ -7,8 +7,7 @@ const DynamoDAO = require('../utils/dynamo-dao.js');
 const ArticleController = require('./controller.js');
 
 module.exports.handler = (event, context, callback) => {
-    const article = readArticle(event, callback);
     const dynamoDAO = new DynamoDAO(dynamo, 'BlogTable');
     const controller = new ArticleController(dynamoDAO);
-    controller.readArticle(article, callback);
+    controller.readAllArticles(callback);
 };

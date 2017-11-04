@@ -40,7 +40,7 @@ const deleteArticle = (event, callback) => {
     return new Article(id);
 }
 
-// Private validation functions
+// Business validations
 const validateAttributes = (event, callback) => {
     const body = JSON.parse(event.body);
     if (typeof body.text !== 'string') {

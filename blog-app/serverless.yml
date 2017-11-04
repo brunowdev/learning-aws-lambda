@@ -26,8 +26,14 @@ functions:
     handler: articles/get.handler
     events:
       - http:
-          path: articles
+          path: articles/{id}
           method: get
+  getAllArticles:
+    handler: articles/getAll.handler
+    events:
+      - http:
+          path: articles
+          method: get          
   updateArticle:
     handler: articles/put.handler
     events:
