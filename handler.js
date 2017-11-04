@@ -8,10 +8,13 @@ module.exports.hello = (event, context, callback) => {
  
 		const response = {
 			statusCode: 200,
-			ev:event,
-			rt: remainingTime,
-			fn: functionName,
-			aid: AWSrequestID
+			body: JSON.stringify({
+				ev:event,
+				rt: remainingTime,
+				fn: functionName,
+				aid: AWSrequestID
+			})
+			
 		};
 
   callback(null, response);
